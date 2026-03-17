@@ -1,90 +1,90 @@
-# File Converter
+# Конвертер Файлів
 
-A powerful Java CLI tool for converting files between JSON, XML, and CSV formats.
+Потужний Java CLI інструмент для конвертації файлів між форматами JSON, XML та CSV.
 
-## Features
+## Можливості
 
-- **Bidirectional conversion**: Convert between any of the supported formats
-- **Auto-detection**: Automatically detects input/output formats from file extensions
-- **Manual override**: Specify formats manually when needed
-- **Unicode support**: Full UTF-8 encoding support
-- **Error handling**: Comprehensive error messages and validation
-- **Design patterns**: Implements Factory, Strategy, and Facade patterns
-- **Well-tested**: Comprehensive unit tests with high coverage
+- **Двонаправлена конвертація**: Конвертація між будь-якими підтримуваними форматами
+- **Автовизначення**: Автоматично визначає формати вводу/виводу за розширеннями файлів
+- **Ручне перевизначення**: Вкажіть формати вручну за потреби
+- **Підтримка Unicode**: Повна підтримка кодування UTF-8
+- **Обробка помилок**: Комплексні повідомлення про помилки та валідація
+- **Шаблони проєктування**: Реалізовано шаблони Factory, Strategy та Facade
+- **Добре протестовано**: Комплексні модульні тести з високим покриттям
 
-## Supported Formats
+## Підтримувані формати
 
 - **JSON** (`.json`)
 - **XML** (`.xml`)
 - **CSV** (`.csv`)
 
-## Requirements
+## Вимоги
 
-- Java 21 or higher
-- Maven 3.6 or higher
+- Java 21 або вище
+- Maven 3.6 або вище
 
-## Installation
+## Встановлення
 
-1. Clone the repository:
+1. Клонуйте репозиторій:
 ```bash
-git clone <repository-url>
+git clone https://github.com/oyartsev-cloud/java-file-converter.git
 cd java-converter
 ```
 
-2. Build the project:
+2. Зберіть проєкт:
 ```bash
 mvn clean package
 ```
 
-3. The executable JAR will be created at: `target/file-converter-1.0.0.jar`
+3. Виконуваний JAR буде створено за адресою: `target/file-converter-1.0.0.jar`
 
-## Usage
+## Використання
 
-### Basic Usage
+### Базове використання
 
 ```bash
-java -jar target/file-converter-1.0.0.jar <input_file> <output_file>
+java -jar target/file-converter-1.0.0.jar <вхідний_файл> <вихідний_файл>
 ```
 
-The converter automatically detects formats from file extensions:
+Конвертер автоматично визначає формати за розширеннями файлів:
 
 ```bash
-# Convert JSON to XML
+# Конвертація JSON в XML
 java -jar target/file-converter-1.0.0.jar data.json output.xml
 
-# Convert CSV to JSON
+# Конвертація CSV в JSON
 java -jar target/file-converter-1.0.0.jar input.csv output.json
 
-# Convert XML to CSV
+# Конвертація XML в CSV
 java -jar target/file-converter-1.0.0.jar data.xml output.csv
 ```
 
-### Advanced Usage
+### Розширене використання
 
-Specify formats manually:
+Вкажіть формати вручну:
 
 ```bash
 java -jar target/file-converter-1.0.0.jar input.txt output.json --input-format xml --output-format json
 ```
 
-### Command Line Options
+### Опції командного рядка
 
-- `<input_file>`: Path to the input file (required)
-- `<output_file>`: Path to the output file (required)
-- `-i, --input-format`: Specify input format (json, xml, csv)
-- `-o, --output-format`: Specify output format (json, xml, csv)
-- `-v, --verbose`: Enable verbose output
-- `-h, --help`: Show help message
-- `--version`: Show version information
+- `<вхідний_файл>`: Шлях до вхідного файлу (обов'язково)
+- `<вихідний_файл>`: Шлях до вихідного файлу (обов'язково)
+- `-i, --input-format`: Вкажіть вхідний формат (json, xml, csv)
+- `-o, --output-format`: Вкажіть вихідний формат (json, xml, csv)
+- `-v, --verbose`: Увімкнути детальний вивід
+- `-h, --help`: Показати довідку
+- `--version`: Показати інформацію про версію
 
-### Examples
+### Приклади
 
-#### JSON to XML
+#### JSON в XML
 ```bash
 java -jar target/file-converter-1.0.0.jar users.json users.xml
 ```
 
-Input (`users.json`):
+Вхідний файл (`users.json`):
 ```json
 {
   "users": [
@@ -102,7 +102,7 @@ Input (`users.json`):
 }
 ```
 
-Output (`users.xml`):
+Вихідний файл (`users.xml`):
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
@@ -121,12 +121,12 @@ Output (`users.xml`):
 </root>
 ```
 
-#### CSV to JSON
+#### CSV в JSON
 ```bash
 java -jar target/file-converter-1.0.0.jar products.csv products.json
 ```
 
-Input (`products.csv`):
+Вхідний файл (`products.csv`):
 ```csv
 name,price,category
 Laptop,999.99,Electronics
@@ -134,7 +134,7 @@ Book,19.99,Education
 Coffee,4.99,Food
 ```
 
-Output (`products.json`):
+Вихідний файл (`products.json`):
 ```json
 [ {
   "name" : "Laptop",
@@ -151,117 +151,117 @@ Output (`products.json`):
 } ]
 ```
 
-#### XML to CSV
+#### XML в CSV
 ```bash
 java -jar target/file-converter-1.0.0.jar inventory.xml inventory.csv
 ```
 
-## Architecture
+## Архітектура
 
-The project follows clean architecture principles and implements several design patterns:
+Проєкт слідує принципам чистої архітектури та реалізує кілька шаблонів проєктування:
 
-### Design Patterns
+### Шаблони проєктування
 
-1. **Factory Pattern**: `ParserFactory` and `GeneratorFactory` create appropriate parsers and generators based on file format.
+1. **Шаблон Factory**: `ParserFactory` та `GeneratorFactory` створюють відповідні парсери та генератори на основі формату файлу.
 
-2. **Strategy Pattern**: `ConversionStrategy` interface allows different conversion strategies to be implemented.
+2. **Шаблон Strategy**: Інтерфейс `ConversionStrategy` дозволяє реалізовувати різні стратегії конвертації.
 
-3. **Facade Pattern**: `FileConverterFacade` provides a simplified interface for file conversion operations.
+3. **Шаблон Facade**: `FileConverterFacade` надає спрощений інтерфейс для операцій конвертації файлів.
 
-### Package Structure
+### Структура пакетів
 
 ```
 com.fileconverter/
-├── cli/                    # CLI interface and facade
-├── conversion/            # Conversion strategies
-├── exception/             # Custom exceptions
-├── generator/             # File generators (JSON, XML, CSV)
-├── parser/               # File parsers (JSON, XML, CSV)
-└── utils/                 # Utility classes
+├── cli/                    # CLI інтерфейс та фасад
+├── conversion/            # Стратегії конвертації
+├── exception/             # Кастомні винятки
+├── generator/             # Генератори файлів (JSON, XML, CSV)
+├── parser/               # Парсери файлів (JSON, XML, CSV)
+└── utils/                 # Утилітарні класи
 ```
 
-## Testing
+## Тестування
 
-Run the test suite:
+Запустіть тестовий набір:
 
 ```bash
 mvn test
 ```
 
-Run tests with coverage:
+Запустіть тести з покриттям:
 
 ```bash
 mvn clean test jacoco:report
 ```
 
-The test coverage report will be generated at `target/site/jacoco/index.html`.
+Звіт про покриття тестів буде згенеровано за адресою `target/site/jacoco/index.html`.
 
-## Error Handling
+## Обробка помилок
 
-The converter provides detailed error messages for:
-- Unsupported file formats
-- Invalid file syntax
-- Missing files
-- Permission issues
-- Encoding problems
+Конвертер надає детальні повідомлення про помилки для:
+- Непідтримуваних форматів файлів
+- Недійсного синтаксису файлів
+- Відсутніх файлів
+- Проблем з дозволами
+- Проблем з кодуванням
 
-## Dependencies
+## Залежності
 
-- **Jackson**: JSON and XML processing
-- **OpenCSV**: CSV processing
-- **Picocli**: Command line interface
-- **JUnit 5**: Unit testing
-- **Mockito**: Mocking for tests
+- **Jackson**: Обробка JSON та XML
+- **OpenCSV**: Обробка CSV
+- **Picocli**: Інтерфейс командного рядка
+- **JUnit 5**: Модульне тестування
+- **Mockito**: Мокування для тестів
 
-## Building
+## Збірка
 
-### Development Build
+### Розробницька збірка
 
 ```bash
 mvn clean compile
 ```
 
-### Production Build
+### Продакшн збірка
 
 ```bash
 mvn clean package
 ```
 
-### Skip Tests
+### Пропустити тести
 
 ```bash
 mvn clean package -DskipTests
 ```
 
-## License
+## Ліцензія
 
-This project is open source and available under the MIT License.
+Цей проєкт є відкритим і доступним під ліцензією MIT.
 
-## Contributing
+## Внесок
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests for new functionality
-5. Run the test suite
-6. Submit a pull request
+1. Зробіть форк репозиторію
+2. Створіть гілку функціоналу
+3. Зробіть свої зміни
+4. Додайте тести для нової функціональності
+5. Запустіть тестовий набір
+6. Надішліть pull request
 
-## Troubleshooting
+## Усунення несправностей
 
-### Common Issues
+### Поширені проблеми
 
 1. **"Could not detect input file format"**
-   - Ensure the input file has a supported extension (.json, .xml, .csv)
-   - Or specify the format manually using `--input-format`
+   - Переконайтеся, що вхідний файл має підтримуване розширення (.json, .xml, .csv)
+   - Або вкажіть формат вручну за допомогою `--input-format`
 
 2. **"Cannot read input file"**
-   - Check file permissions
-   - Ensure the file exists and is readable
+   - Перевірте дозволи файлу
+   - Переконайтеся, що файл існує і доступний для читання
 
 3. **"Failed to parse JSON/XML/CSV file"**
-   - Verify the file syntax is valid
-   - Check for encoding issues
+   - Перевірте, що синтаксис файлу є дійсним
+   - Перевірте наявність проблем з кодуванням
 
-4. **Memory issues with large files**
-   - Increase JVM heap size: `-Xmx2g`
-   - Consider processing files in chunks (future enhancement)
+4. **Проблеми з пам'яттю з великими файлами**
+   - Збільшіть розмір купи JVM: `-Xmx2g`
+   - Розгляньте обробку файлів частинами (майбутнє покращення)
